@@ -33,6 +33,13 @@ var calculator = {
     ($('#preview').html(result));
     ($('#result').html(result));
   },
+  handleDot: function() {
+    var patternForLatestNum = /[^\+\-\*\/]*$/;
+    var latestNumber = calculator.previewContent().match(patternForLatestNum)[0];
+    if (latestNumber.indexOf(".") == -1) {
+      calculator.handleInput(".");
+    }
+  },
   handleGenericInput: function(key) {
     if(key == "0"){
      calculator.handleZero();
@@ -42,6 +49,8 @@ var calculator = {
       calculator.handleOperator(key);
     } else if (key == "=") {
       calculator.evaluateResult();
+    } else if (key == ".") {
+      calculator.handleDot();
     } else {
     calculator.handleInput(key);
     }
