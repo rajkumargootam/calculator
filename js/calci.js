@@ -28,6 +28,11 @@ var calculator = {
     calculator.handleInput(key);
     }
   },
+  evaluateResult: function() {
+    var result = eval(calculator.previewContent());
+    ($('#preview').html(result));
+    ($('#result').html(result));
+  },
   handleGenericInput: function(key) {
     if(key == "0"){
      calculator.handleZero();
@@ -35,6 +40,8 @@ var calculator = {
       calculator.deleteLastChar();
     } else if (calculator.KeyIsOperator(key)) {
       calculator.handleOperator(key);
+    } else if (key == "=") {
+      calculator.evaluateResult();
     } else {
     calculator.handleInput(key);
     }
