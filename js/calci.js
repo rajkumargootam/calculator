@@ -33,6 +33,10 @@ var calculator = {
     ($('#preview').html(result));
     ($('#result').html(result));
   },
+  clear: function(){
+    ($('#preview').html(""));
+    ($('#result').html(""));
+  },
   handleDot: function() {
     var patternForLatestNum = /[^\+\-\*\/]*$/;
     var latestNumber = calculator.previewContent().match(patternForLatestNum)[0];
@@ -59,7 +63,9 @@ var calculator = {
     $('.key').click(function() {
       var key = $(this).html();
       calculator.handleGenericInput(key);
-
+    });
+    $('.delete').dblclick(function() {
+      calculator.clear();
     });
   }
 };
