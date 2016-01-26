@@ -59,6 +59,29 @@ var calculator = {
     calculator.handleInput(key);
     }
   },
+  bindKeys: function() {
+    $(document).bind('keyup', '0', function() {calculator.handleZero()});
+    $(document).bind('keyup', '1', function() {calculator.handleInput(1)});
+    $(document).bind('keyup', '2', function() {calculator.handleInput(2)});
+    $(document).bind('keyup', '3', function() {calculator.handleInput(3)});
+    $(document).bind('keyup', '4', function() {calculator.handleInput(4)});
+    $(document).bind('keyup', '5', function() {calculator.handleInput(5)});
+    $(document).bind('keyup', '6', function() {calculator.handleInput(6)});
+    $(document).bind('keyup', '7', function() {calculator.handleInput(7)});
+    $(document).bind('keyup', '8', function() {calculator.handleInput(8)});
+    $(document).bind('keyup', '9', function() {calculator.handleInput(9)});
+    $(document).bind('keyup', '.', function() {calculator.handleDot()});
+    $(document).bind('keyup', 'return', function() {calculator.evaluateResult(9)});
+    $(document).bind('keyup', 'backspace', function() {calculator.deleteLastChar()});
+    $(document).bind('keyup', 'del', function() {calculator.deleteLastChar()});
+    $(document).bind('keyup', 'esc', function() {calculator.clear()});
+    $(document).bind('keyup', '+', function() {calculator.handleOperator("+")});
+    $(document).bind('keyup', '-', function() {calculator.handleOperator("-")});
+    $(document).bind('keyup', '*', function() {calculator.handleOperator("*")});
+    $(document).bind('keyup', 'X', function() {calculator.handleOperator("X")});
+    $(document).bind('keyup', '/', function() {calculator.handleOperator("/")});
+
+  },
   init: function(){
     $('.key').click(function() {
       var key = $(this).html();
@@ -67,6 +90,7 @@ var calculator = {
     $('.delete').dblclick(function() {
       calculator.clear();
     });
+    calculator.bindKeys();
   }
 };
 
